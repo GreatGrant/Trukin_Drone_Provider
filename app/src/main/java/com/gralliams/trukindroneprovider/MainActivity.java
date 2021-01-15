@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
                 loadingAnimation.setVisibility(View.VISIBLE);
+                makeToolBarInvisible();
             }
 
             @Override
@@ -195,8 +196,7 @@ public class MainActivity extends AppCompatActivity {
             relativeLayout.setVisibility(View.GONE);
             loadingAnimation.cancelAnimation();
             loadingAnimation.setVisibility(View.GONE);
-            showToolbar();
-
+            makeToolBarInvisible();
         }
         else if (mobileNetwork.isConnected()){
             webView.loadUrl(webUrl);
@@ -204,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
             relativeLayout.setVisibility(View.GONE);
             loadingAnimation.cancelAnimation();
             loadingAnimation.setVisibility(View.GONE);
-            showToolbar();
+            makeToolBarInvisible();
         }
         else{
             loadingAnimation.cancelAnimation();

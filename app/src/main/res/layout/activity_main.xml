@@ -37,7 +37,7 @@
                 android:id="@+id/animationView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:lottie_rawRes="@raw/please_wait"
+                app:lottie_rawRes="@raw/cart"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"/>
 
