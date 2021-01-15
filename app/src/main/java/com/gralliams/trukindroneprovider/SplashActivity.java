@@ -25,7 +25,6 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             LottieAnimationView loadingAnimation = findViewById(R.id.drone_anim);
             loadingAnimation.playAnimation();
-            findViewById(R.id.textView).setVisibility(View.VISIBLE);
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         }, SPLASH_TIMEOUT);

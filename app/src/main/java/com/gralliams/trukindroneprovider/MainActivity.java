@@ -230,40 +230,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch(item.getItemId()){
-
-            case R.id.nav_previous:
-                onBackPressed();
-                break;
-
-            case R.id.nav_next:
-
-                if(webView.canGoForward()){
-                    webView.goForward();
-                }
-
-                break;
-
-            case R.id.nav_reload:
-                checkConnection();
-                break;
-
-
-
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
 
 
 }

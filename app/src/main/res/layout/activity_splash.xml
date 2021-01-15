@@ -31,14 +31,14 @@
         app:lottie_rawRes="@raw/drone" />
 
     <TextView
-        android:visibility="invisible"
         android:id="@+id/textView"
         android:textColor="@color/white"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="Initialising"
         android:textAlignment="center"
-        android:textSize="40sp"
+        android:textSize="30sp"
+        android:fontFamily="monospace"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
