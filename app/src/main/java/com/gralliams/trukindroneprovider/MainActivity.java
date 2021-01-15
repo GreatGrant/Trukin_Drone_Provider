@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
 
-                progressBarWeb.setVisibility(View.VISIBLE);
+                progressBarWeb.setVisibility(View.INVISIBLE);
                 progressBarWeb.setProgress(newProgress);
                 loadingAnimation.setVisibility(View.VISIBLE);
                 loadingAnimation.playAnimation();

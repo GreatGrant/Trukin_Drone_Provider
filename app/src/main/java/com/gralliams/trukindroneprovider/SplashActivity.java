@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -24,6 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             LottieAnimationView loadingAnimation = findViewById(R.id.drone_anim);
             loadingAnimation.playAnimation();
+            findViewById(R.id.textView).setVisibility(View.VISIBLE);
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         }, SPLASH_TIMEOUT);
