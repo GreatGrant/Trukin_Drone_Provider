@@ -1,13 +1,11 @@
 package com.gralliams.trukindroneprovider;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,9 +33,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class MainActivity extends AppCompatActivity {
     WebView webView;
-    private String webUrl = "https://amicablelogistic.com";
+    private String webUrl = "https://trukin.com.au";
     ProgressBar progressBarWeb;
-    ProgressDialog progressDialog;
     RelativeLayout relativeLayout;
     Button btnNoInternetConnection;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -53,10 +50,7 @@ public class MainActivity extends AppCompatActivity {
         progressBarWeb =  findViewById(R.id.progressBar);
         loadingAnimation = findViewById(R.id.animationView);
         connectionMessage = findViewById(R.id.txtNoConnection);
-        //TODO: LOTTIE START
-
-//         progressDialog = new ProgressDialog(this);
-//         progressDialog.setMessage("Loading Please Wait");
+        makeToolBarInvisible();
 
         btnNoInternetConnection = findViewById(R.id.btnNoConnection);
         relativeLayout =  findViewById(R.id.relativeLayout);
@@ -84,15 +78,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //Solved WebView SwipeUp Problem
-        webView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
-            @Override
-            public void onScrollChanged() {
-                if (webView.getScrollY() == 0) {
-                    swipeRefreshLayout.setEnabled(true);
-                } else {
-                    swipeRefreshLayout.setEnabled(false);
-                }
+        //Handles WebView SwipeUp Problem
+        webView.getViewTreeObserver().addOnScrollChangedListener(() -> {
+            if (webView.getScrollY() == 0) {
+                swipeRefreshLayout.setEnabled(true);
+            } else {
+                swipeRefreshLayout.setEnabled(false);
             }
         });
 
@@ -101,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-//                 Toast.makeText(MainActivity.this, "Failed to load data, swipe down to refresh", Toast.LENGTH_SHORT).show();
                 webView.loadUrl("about:blank");
                 checkConnection();
             }
@@ -123,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(false);
                 loadingAnimation.cancelAnimation();
                 loadingAnimation.setVisibility(View.GONE);
+                showToolbar();
                 super.onPageFinished(view, url);
             }
 
@@ -142,15 +133,13 @@ public class MainActivity extends AppCompatActivity {
                 progressBarWeb.setProgress(newProgress);
                 loadingAnimation.setVisibility(View.VISIBLE);
                 loadingAnimation.playAnimation();
-//                 setTitle("Loading...");
-//                 progressDialog.show();
+
                 if(newProgress == 100){
 
                     progressBarWeb.setVisibility(View.GONE);
                     loadingAnimation.cancelAnimation();
                     loadingAnimation.setVisibility(View.GONE);
-//                     setTitle(view.getTitle());
-//                     progressDialog.dismiss();
+                     showToolbar();
 
                 }
 
@@ -206,6 +195,7 @@ public class MainActivity extends AppCompatActivity {
             relativeLayout.setVisibility(View.GONE);
             loadingAnimation.cancelAnimation();
             loadingAnimation.setVisibility(View.GONE);
+            showToolbar();
 
         }
         else if (mobileNetwork.isConnected()){
@@ -214,16 +204,30 @@ public class MainActivity extends AppCompatActivity {
             relativeLayout.setVisibility(View.GONE);
             loadingAnimation.cancelAnimation();
             loadingAnimation.setVisibility(View.GONE);
+            showToolbar();
         }
         else{
             loadingAnimation.cancelAnimation();
             loadingAnimation.setVisibility(View.GONE);
             webView.setVisibility(View.GONE);
             relativeLayout.setVisibility(View.VISIBLE);
-
+            makeToolBarInvisible();
         }
 
 
+    }
+
+    private void makeToolBarInvisible() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
+    }
+
+    private void showToolbar() {
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().show();
+        }
     }
 
     @Override
