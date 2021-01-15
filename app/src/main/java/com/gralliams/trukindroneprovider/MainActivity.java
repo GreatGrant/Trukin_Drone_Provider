@@ -247,11 +247,13 @@ public class MainActivity extends AppCompatActivity {
                     // Turning on the light mode
                     WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_OFF);
                 }
+                break;
             case R.id.action_modedark:
                 if (WebViewFeature.isFeatureSupported(WebViewFeature.FORCE_DARK)) {
                     // Turning on the dark mode
                     WebSettingsCompat.setForceDark(webView.getSettings(), WebSettingsCompat.FORCE_DARK_ON);
                 }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
