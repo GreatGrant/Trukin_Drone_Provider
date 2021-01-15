@@ -128,15 +128,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-//                 if (Uri.parse(url).getHost().equals(webUrl)) {
-//                     return false;
-//                 }
-//                 else {
-//                     webView.setVisibility(View.GONE);
-//                     connectionMessage.setText(R.string.error_msg);
-//                     relativeLayout.setVisibility(View.VISIBLE);
-//                 return true;
-//                 }
                 view.loadUrl(url);
                 return true;
             }
