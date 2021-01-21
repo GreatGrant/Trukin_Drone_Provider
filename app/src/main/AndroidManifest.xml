@@ -11,6 +11,10 @@
         android:theme="@style/Theme.TrukinDroneProvider">
         <activity android:name=".OnboardingActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar"/>
+
+        <activity android:name=".LauncherActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
