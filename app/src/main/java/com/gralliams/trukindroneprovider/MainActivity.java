@@ -35,7 +35,7 @@ import androidx.webkit.WebViewFeature;
 
 public class MainActivity extends AppCompatActivity {
     WebView webView;
-    private String webUrl = "https://trukin.com.au";
+    private String webUrl = "https://trukin.co";
     ProgressBar progressBarWeb;
     RelativeLayout relativeLayout;
     Button btnNoInternetConnection;
